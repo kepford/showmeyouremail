@@ -1,0 +1,6 @@
+; $Id$
+name = "Show Me Your Email"
+description = "A module that displays the user's email address on their profile page"
+core = 6.x
+package = mail
+dependencies[] = user

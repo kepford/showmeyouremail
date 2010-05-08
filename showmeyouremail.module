@@ -1,0 +1,65 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * The main module file for showmeyouremail module.
+ */
+
+/**
+ * Implementation of hook_perm().
+ */
+function showmeyouremail_perm() {
+  return array('View user email addresses');
+}
+
+
+/**
+ * Implementation of hook_user().
+ */
+function showmeyouremail_user($op, &$edit, &$account) {
+  switch ($op) {
+
+    case 'view':
+      $output = theme('showmeyouremail_user', $account);
+      if (!empty($output)) {
+        $account->content['showmeyouremail'] = array(
+          '#type' => 'user_profile_item',
+          '#title' => t('Email'),
+          '#value' => $output,
+          '#weight' => 0,
+        );
+      }
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_theme()
+ */
+function showmeyouremail_theme() {
+  return array(
+    'showmeyouremail_user' => array(
+      'arguments' => array('account' => NULL)
+    )
+  );
+}
+
+/**
+ * Theme function for the user page.
+ */
+function theme_showmeyouremail_user($account) {
+
+/*check user permission to view user email addresses */
+
+ if (user_access('View user email addresses')) {
+
+/*Outputs the user's email address */
+  
+    $output = t($account->mail); 
+  
+  }
+  
+  return $output;
+}
+
