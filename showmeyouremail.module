@@ -56,9 +56,9 @@ function theme_showmeyouremail_user($account) {
 
 /*Outputs the user's email address */
   
-    //$output = t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>'); 
+    $output = t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>'); 
   
-  $output = theme('showmeyouremail_user', $account);
+/*   $output = theme('showmeyouremail_user', $account); */
   
   }
 
@@ -72,6 +72,7 @@ function theme_showmeyouremail_user($account) {
  * hook_theme is required to register our themeable (overrideable) output
  * with drupal's theme system.
  */
+/*
 function showmeyouremail_theme() {
   return array(
     'showmeyouremail_user' => array(
@@ -79,6 +80,7 @@ function showmeyouremail_theme() {
     )
   );
 }
+*/
 
 /**
  * Default theme output for "stalker_user".
@@ -86,8 +88,10 @@ function showmeyouremail_theme() {
  * Any time we create themeable output, we must provide the default
  * implementation (that can be later overridden by themers).
  */
+/*
 function theme_showmeyouremail_user($account) {
  
   return t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>'); 
 }
+*/
 
