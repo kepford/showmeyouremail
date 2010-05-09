@@ -13,7 +13,9 @@ function showmeyouremail_perm() {
   return array('View user email addresses');
 }
 
-
+/**
+ * Implemention of hook_user()
+ */
 function showmeyouremail_user($op, &$edit, &$account) {
   switch ($op) {
 
