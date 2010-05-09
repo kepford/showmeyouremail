@@ -62,6 +62,6 @@ function showmeyouremail_theme() {
  * implementation (that can be later overridden by themers).
  */
 function theme_showmeyouremail_user($account) {
-//  global $user;
+
   return t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>');
 }
