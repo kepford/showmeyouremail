@@ -54,9 +54,9 @@ function theme_showmeyouremail_user($account) {
 
  if (user_access('View user email addresses')) {
 
-/*Outputs the user's email address */
+ /*Outputs the user's email address */
   
-    $output = t($account->mail); 
+ $output = t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>'); 
   
   }
   
