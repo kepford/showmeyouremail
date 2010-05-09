@@ -63,20 +63,5 @@ function showmeyouremail_theme() {
  */
 function theme_showmeyouremail_user($account) {
 
-
-/*check user permission to view user email addresses */
-
- if (user_access('View user email addresses')) {
-
- /*Outputs the user's email address */
-  
- $output = t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>'); 
-  
-  }
-  
-  return $output;
-
-//  global $user;
   return t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>');
-
 }
