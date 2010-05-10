@@ -61,5 +61,5 @@ function showmeyouremail_theme() {
  */
 function theme_showmeyouremail_user($account) {
 
-  return t('<a href="mailto:' . $account->mail .'">' . $account->mail . '</a>');
+  return t('<a href="mailto:' . check_plain($account->mail) .'">' . check_plain($account->mail) . '</a>');
 }
