@@ -2,5 +2,6 @@
 name = "Show Me Your Email"
 description = "A module that displays the user's email address on their profile page"
 core = 6.x
+version = "6.x-1.0-beta1"
 package = mail
 dependencies[] = user
