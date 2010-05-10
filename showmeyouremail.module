@@ -21,11 +21,11 @@ function showmeyouremail_user($op, &$edit, &$account) {
 
     case 'view':
 
-	/*check user permission to view user email addresses */
+  /*check user permission to view user email addresses */
 
- 	if (user_access('View user email addresses')) {
+  if (user_access('View user email addresses')) {
   
-	$content = theme('showmeyouremail_user', $account);
+  $content = theme('showmeyouremail_user', $account);
   
     $account->content['showmeyouremail'] = array(
           '#type' => 'user_profile_item',
