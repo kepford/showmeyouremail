@@ -7,39 +7,43 @@
  */
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_permission().
  */
-function showmeyouremail_perm() {
-  return array('View user email addresses');
+function showmeyouremail_permission() {
+  return array(
+    'View user email addresses' => array(
+      'title' => t('View user email addresses'),
+      'description' => t('TODO Add a description for \'View user email addresses\''),
+    ),
+  );
 }
 
 /**
- * Implemention of hook_user()
+ * Implements hook_user_view().
  */
-function showmeyouremail_user($op, &$edit, &$account) {
-  switch ($op) {
-
-    case 'view':
+function showmeyouremail_user_view($account, $view_mode) {
 
   /*check user permission to view user email addresses */
 
   if (user_access('View user email addresses')) {
-  
-  $content = theme('showmeyouremail_user', $account);
-  
+
+    $content = theme('showmeyouremail_user', array('account' => $account));
+
     $account->content['showmeyouremail'] = array(
-          '#type' => 'user_profile_item',
-          '#title' => t('Email'),
-          '#value' => $content,
-          '#weight' => 0,
-        );
-      }
-      break;
+      '#type' => 'user_profile_item',
+      '#title' => t('Email'),
+      '#value' => $content,
+      '#weight' => 0,
+    );
   }
-  
- }
- 
- /**
+}
+
+/**
+ * Implements hook_user().
+ */
+function showmeyouremail_user_OLD($op, &$edit, &$account) { }
+
+/**
  * Example implementation of hook_theme().
  *
  * hook_theme is required to register our themeable (overrideable) output
@@ -48,8 +52,8 @@ function showmeyouremail_user($op, &$edit, &$account) {
 function showmeyouremail_theme() {
   return array(
     'showmeyouremail_user' => array(
-      'arguments' => array('account' => NULL),
-    )
+      'variables' => array('account' => NULL),
+    ),
   );
 }
 
@@ -59,7 +63,8 @@ function showmeyouremail_theme() {
  * Any time we create themeable output, we must provide the default
  * implementation (that can be later overridden by themers).
  */
-function theme_showmeyouremail_user($account) {
+function theme_showmeyouremail_user($variables) {
+  $account = $variables['account'];
 
   return l($account->mail, 'mailto:' . $account->mail);
 }
