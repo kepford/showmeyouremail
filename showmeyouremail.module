@@ -13,7 +13,7 @@ function showmeyouremail_permission() {
   return array(
     'View user email addresses' => array(
       'title' => t('View user email addresses'),
-      'description' => t('TODO Add a description for \'View user email addresses\''),
+      'description' => t('Enabling this permission will allow users to see user email addresses'),
     ),
   );
 }
@@ -44,8 +44,6 @@ function showmeyouremail_user_view($account, $view_mode) {
 function showmeyouremail_user_OLD($op, &$edit, &$account) { }
 
 /**
- * Example implementation of hook_theme().
- *
  * hook_theme is required to register our themeable (overrideable) output
  * with drupal's theme system.
  */
