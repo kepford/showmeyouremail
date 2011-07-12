@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 /**
  * @file
@@ -18,32 +17,23 @@ function showmeyouremail_perm() {
  */
 function showmeyouremail_user($op, &$edit, &$account) {
   switch ($op) {
-
     case 'view':
-
-  /*check user permission to view user email addresses */
-
-  if (user_access('View user email addresses')) {
-  
-  $content = theme('showmeyouremail_user', $account);
-  
-    $account->content['showmeyouremail'] = array(
-          '#type' => 'user_profile_item',
-          '#title' => t('Email'),
-          '#value' => $content,
-          '#weight' => 0,
-        );
+      /*check user permission to view user email addresses */
+      if (user_access('View user email addresses')) {
+        $content = theme('showmeyouremail_user', $account);
+        $account->content['showmeyouremail'] = array(
+              '#type' => 'user_profile_item',
+              '#title' => t('Email'),
+              '#value' => $content,
+              '#weight' => 0,
+            );
       }
       break;
   }
-  
- }
- 
- /**
+}
+
+/**
  * Example implementation of hook_theme().
- *
- * hook_theme is required to register our themeable (overrideable) output
- * with drupal's theme system.
  */
 function showmeyouremail_theme() {
   return array(
@@ -54,12 +44,8 @@ function showmeyouremail_theme() {
 }
 
 /**
- * Default theme output for "showmeyouremail_user".
- *
- * Any time we create themeable output, we must provide the default
- * implementation (that can be later overridden by themers).
+ * Default theme output for "showmeyouremail_user". *
  */
 function theme_showmeyouremail_user($account) {
-
   return l($account->mail, 'mailto:' . $account->mail);
 }
